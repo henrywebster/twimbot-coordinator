@@ -19,7 +19,6 @@ repositories {
 }
 
 dependencies {
-	// TODO use variable for AWS versions
 	implementation platform("software.amazon.awssdk:bom:$awsVersion")
 	implementation "software.amazon.awssdk:eventbridge:$awsVersion"
 	implementation "software.amazon.awssdk:batch:$awsVersion"

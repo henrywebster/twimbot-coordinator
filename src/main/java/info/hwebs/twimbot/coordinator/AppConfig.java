@@ -29,11 +29,11 @@ public class AppConfig {
         // TODO should be an env option in future
         final Set<JobStatus> statuses = EnumSet.of(JobStatus.SUCCEEDED);
 
-        final AWSBatchAsyncRequestHandler batchHandler = new AWSBatchAsyncRequestHandler(
-                BatchAsyncClient.builder().build(), jobQueue, statuses);
+        final AWSBatchAsyncRequestHandler batchHandler = new AWSBatchAsyncRequestHandler(BatchAsyncClient.create(),
+                jobQueue, statuses);
 
         final AWSEventBridgeAsyncRequestHandler eventBridgeHandler = new AWSEventBridgeAsyncRequestHandler(
-                EventBridgeAsyncClient.builder().build(), ruleName);
+                EventBridgeAsyncClient.create(), ruleName);
 
         return new AWSAsyncCoordinator(eventBridgeHandler, batchHandler, new AWSMapper());
     }
